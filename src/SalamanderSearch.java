@@ -67,11 +67,16 @@ public class SalamanderSearch {
         // If food is found
         if(enclosure[curR][curC] == 'f') return true;
 
+        // Handles printing arrays
+        PrettyPrint.prettyPrintln(current);
+
         // Mark the locations as visited
         visited[curR][curC] = true;
 
         // Look at neighbors
         List<int[]> possibleMoves = possibleMoves(enclosure, current);
+
+        PrettyPrint.prettyPrintln(possibleMoves);
 
         // Do a for loop to look at each surrounding position
         for (int[] move : possibleMoves) {
@@ -113,7 +118,7 @@ public class SalamanderSearch {
 
         // Checking LEFT
         newR = curR;
-        newC = curR - 1;
+        newC = curC - 1;
 
         if (newC >= 0 && enclosure[newR][newC] != 'W') {
             moves.add(new int[]{newR, newC});
@@ -121,7 +126,7 @@ public class SalamanderSearch {
 
         // Checking Right
         newR = curR;
-        newC = curR + 1;
+        newC = curC + 1;
 
         if (newC < enclosure[0].length && enclosure[newR][newC] != 'W') {
             moves.add(new int[]{newR, newC});
